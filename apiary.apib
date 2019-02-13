@@ -3,78 +3,63 @@ HOST: http://polls.apiblueprint.org/
 
 # shippingManagement
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Polls is a simple API allowing consumers to view shipping list.
 
-## Questions Collection [/questions]
+## Shipping Collection [/shippingManagement]
 
-### List All Questions [GET]
+### List All shipping Items [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "shipping": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
+                        "id": 102030,
+                        "client": "Carla Martinez",
+                        "address": "Av Vitacura 2939 piso 6",
+                        "date": "01/01/2019",
+                        "status": "en preparacion"
                     }, {
-                        "choice": "Python",
-                        "votes": 1024
+                         "id": 102031,
+                        "client": "Arturo Gomez",
+                        "address": "Las condes 123",
+                        "date": "02/01/2019",
+                        "status": "preparado"
                     }, {
-                        "choice": "Objective-C",
-                        "votes": 512
+                         "id": 102032,
+                        "client": "Javier Lopez",
+                        "address": "Av Vitacura 2939 piso 6",
+                        "date": "02/01/2019",
+                        "status": "sin stock"
                     }, {
-                        "choice": "Ruby",
-                        "votes": 256
+                         "id": 102033,
+                        "client": "Catalina Perez",
+                        "address": "Calle Isidora 2245",
+                        "date": "01/01/2019",
+                        "status": "preparado"
                     }
                 ]
             }
         ]
 
-### Create a New Question [POST]
+### Create a New shipping [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Create a new shipping order to one customer.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "client": "client Name",
+            "address": "String",
+            "date": "01/01/2019",
+            "status": "status"
         }
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "id": 102036
             }
